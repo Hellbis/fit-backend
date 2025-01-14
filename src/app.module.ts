@@ -3,6 +3,7 @@ import { ExerciciosModule } from './modules/exercicios/exercicios.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostgresConfigService } from './config/postgres.config.service';
 import { ConfigModule } from '@nestjs/config';
+import { DivisoesModule } from './modules/divisoes/divisoes.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ConfigModule } from '@nestjs/config';
       inject: [PostgresConfigService],
     }),
     ExerciciosModule,
+    DivisoesModule,
   ],
   controllers: [],
   providers: [],
