@@ -7,4 +7,7 @@ export class Divisao {
 
   @Column()
   Nome: string;
+
+  @Column({ unique: true })
+  Ativo: boolean;
 }

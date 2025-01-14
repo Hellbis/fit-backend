@@ -17,7 +17,9 @@ export class DivisoesService {
 
     Object.assign(divisao, createDivisoeDto as Divisao);
 
-    return await this.divisoesRepository.save(createDivisoeDto);
+    divisao.Ativo = false;
+
+    return await this.divisoesRepository.save(divisao);
   }
 
   async findAll() {
@@ -44,6 +46,26 @@ export class DivisoesService {
     Object.assign(divisao, updateDivisoeDto);
 
     return await this.divisoesRepository.save(divisao);
+  }
+
+  async status(id: number, novoStatus: boolean) {
+    const divisao = await this.divisoesRepository.findOneBy({
+      Id: id,
+    });
+
+    if (!divisao) throw new NotFoundException('Divisão não encontrada');
+
+    divisao.Ativo = novoStatus;
+
+    return await this.divisoesRepository.save(divisao);
+  }
+
+  async active(id: number) {
+    return await this.status(id, true);
+  }
+
+  async inactive(id: number) {
+    return await this.status(id, false);
   }
 
   async remove(id: number) {

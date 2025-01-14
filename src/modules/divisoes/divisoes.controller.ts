@@ -6,6 +6,7 @@ import {
   Param,
   Delete,
   Put,
+  Patch,
 } from '@nestjs/common';
 import { DivisoesService } from './divisoes.service';
 import { CreateDivisoeDto } from './dto/create-divisoe.dto';
@@ -36,6 +37,16 @@ export class DivisoesController {
     @Body() updateDivisoeDto: UpdateDivisoeDto,
   ) {
     return await this.divisoesService.update(id, updateDivisoeDto);
+  }
+
+  @Patch(':id/active')
+  async active(@Param('id') id: number) {
+    return await this.divisoesService.active(id);
+  }
+
+  @Patch(':id/inactive')
+  async inactive(@Param('id') id: number) {
+    return await this.divisoesService.active(id);
   }
 
   @Delete(':id')
