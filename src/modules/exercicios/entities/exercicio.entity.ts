@@ -10,4 +10,7 @@ export class Exercicio {
 
   @Column({ length: 300 })
   Url: string;
+
+  @Column({ length: 300 })
+  Pesos: string;
 }

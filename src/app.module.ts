@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostgresConfigService } from './config/postgres.config.service';
 import { ConfigModule } from '@nestjs/config';
 import { DivisoesModule } from './modules/divisoes/divisoes.module';
+import { TreinosModule } from './modules/treinos/treinos.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { DivisoesModule } from './modules/divisoes/divisoes.module';
     }),
     ExerciciosModule,
     DivisoesModule,
+    TreinosModule,
   ],
   controllers: [],
   providers: [],
